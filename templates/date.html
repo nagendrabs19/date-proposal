@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose Date</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body style="background-image: url('/static/images/date choose.webp');">
+
+    <!-- BACKGROUND MUSIC -->
+    <audio id="bgMusic" loop>
+        <source src="/static/audio/audio3.wav" type="audio/wav">
+    </audio>
+
+    <script>
+        // play music on first click (browser safe)
+        document.addEventListener("click", function () {
+            document.getElementById("bgMusic").play();
+        }, { once: true });
+    </script>
+
+    <h1>Choose Your Date 📅</h1>
+
+    <input type="date" id="datePicker">
+
+    <br><br>
+
+    <button onclick="goNext()">Next</button>
+
+    <script>
+        function goNext() {
+            let date = document.getElementById("datePicker").value;
+
+            if (!date) {
+                alert("Please select a date first!");
+                return;
+            }
+
+            localStorage.setItem("selectedDate", date);
+
+            window.location.href = "/final";
+        }
+    </script>
+
+</body>
+</html>
